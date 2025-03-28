@@ -19,6 +19,9 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'role_id', // Thêm cột RoleId
+        'full_name', // Thêm cột FullName
+        'username', // Thêm cột UserName
         'name',
         'email',
         'password',
