@@ -6,6 +6,7 @@ use App\Http\Controllers\ExamDetailController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HistoryDetailController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\AuthController;
 
 // Định nghĩa route API
 Route::get('/api/questions/{id}', [QuestionController::class, 'getQuestionById']);
@@ -29,5 +30,7 @@ Route::get('/api/historydetails/{id}', [HistoryDetailController::class, 'exportB
 
 Route::get('/api/roles', [RoleController::class, 'export']);
 Route::get('/api/roles/{id}', [RoleController::class, 'exportById']);
+
+Route::post('/login', [AuthController::class, 'login']);
 
 ?>

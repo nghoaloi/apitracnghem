@@ -8,6 +8,8 @@ use App\Http\Controllers\ExamDetailController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HistoryDetailController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\AuthController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -39,5 +41,7 @@ Route::get('/api/roles/{id}', [RoleController::class, 'exportById']);
 
 Route::get('/api/categories/{id}', [CategoryController::class, 'exportById']);
 Route::get('/api/categories', [CategoryController::class, 'export']);
+
+Route::post('/login', [AuthController::class, 'login']);
 
 ?>
