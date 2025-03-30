@@ -98,11 +98,11 @@ class QuestionController extends Controller
         // Validate dữ liệu đầu vào
         $validatedData = $request->validate([
             'CategoryId' => 'required|integer',
-            'Content' => 'required|string',
-            'AnswerA' => 'required|string',
-            'AnswerB' => 'required|string',
-            'AnswerC' => 'required|string',
-            'AnswerD' => 'required|string',
+            'Content' => 'required|string|max:255',
+            'AnswerA' => 'required|string|max:255',
+            'AnswerB' => 'required|string|max:255',
+            'AnswerC' => 'required|string|max:255',
+            'AnswerD' => 'required|string|max:255',
             'AnswerCorrect' => 'required|string|max:1',
             'CreatedBy' => 'required|integer',
         ]);
@@ -112,5 +112,43 @@ class QuestionController extends Controller
 
         // Trả về câu hỏi vừa tạo
         return response()->json($question, 201);
+    }
+
+    /**
+     * @OA\Delete(
+     *     path="/api/questions/{id}",
+     *     summary="Xoá câu hỏi theo ID",
+     *     tags={"Questions"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID của câu hỏi",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Xoá thành công",
+     *         @OA\JsonContent(type="object", @OA\Property(property="message", type="string"))
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Không tìm thấy câu hỏi"
+     *     )
+     * )
+     */
+    public function destroy($id)
+    {
+        \Log::info("Deleting question with ID: $id");
+        $question = Question::find($id);
+
+        if (!$question) {
+            \Log::error("Question not found for ID: $id");
+            return response()->json(['error' => 'Question not found'], 404);
+        }
+
+        $question->delete();
+        \Log::info("Question deleted successfully for ID: $id");
+        return response()->json(['message' => 'Question deleted successfully'], 200);
     }
 }

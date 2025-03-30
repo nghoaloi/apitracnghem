@@ -6,6 +6,11 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+    // Global middleware
+    protected $middleware = [
+        \Fruitcake\Cors\HandleCors::class, // Middleware xử lý CORS
+    ];
+
     // Middleware groups
     protected $middlewareGroups = [
         'web' => [
