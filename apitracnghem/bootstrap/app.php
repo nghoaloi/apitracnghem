@@ -12,6 +12,37 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        $middleware->validateCsrfTokens(except: [
+            'api/*',
+            'api/questions',
+            'api/questions/*',
+            'api/deletequestions/*',
+
+            'api/exams',
+            'api/exams/*',
+            'api/deleteexams/*',
+
+            'api/examdetails',
+            'api/examdetails/*',
+            'api/deleteexamdetails/*',
+
+            'api/histories',
+            'api/histories/*',
+            'api/deletehistories/*',
+
+            'api/historydetails',
+            'api/historydetails/*',
+            'api/deletehistorydetails/*',
+
+            'api/roles',
+            'api/roles/*',
+
+            'api/categories',
+            'api/categories/*',
+            'api/deletecategories/*',
+            
+            'api/auth/login',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
