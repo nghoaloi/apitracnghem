@@ -12,4 +12,6 @@ class HistoryDetail extends Model
     protected $table = 'historydetail';
     protected $fillable = ['Id', 'HistoryId', 'QuestionId', 'AnswerSelect'];
     public $timestamps = false;
+
+    protected $primaryKey = 'Id';
 }

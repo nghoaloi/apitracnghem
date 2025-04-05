@@ -12,4 +12,6 @@ class History extends Model
     protected $table = 'history';
     protected $fillable = ['Id', 'ExamId', 'UserId', 'TimeDoExam', 'Point', 'CreatedAt'];
     public $timestamps = false;
+
+    protected $primaryKey = 'Id';
 }

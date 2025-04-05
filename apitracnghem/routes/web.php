@@ -37,6 +37,8 @@ Route::get('/api/examdetails', [ExamDetailController::class, 'export']);
 Route::get('/api/examdetails/{id}', [ExamDetailController::class, 'exportById']);
 Route::post('/api/examdetails', [ExamDetailController::class, 'store']);
 Route::delete('/api/deleteexamdetails/{id}', [ExamDetailController::class, 'destroy']);
+Route::get('api/examdetailsbyexamid/{examId}', [ExamDetailController::class, 'exportByExamId']);
+
 
 
 Route::get('/api/histories', [HistoryController::class, 'export']);
@@ -61,4 +63,7 @@ Route::delete('/api/deletecategories/{id}', [CategoryController::class, 'destroy
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/api/users', [UserController::class, 'store']);
 Route::delete('/api/deleteusers/{id}', [UserController::class, 'destroy']);
+
+Route::get('/api/users/{id}', [UserController::class, 'exportById']);
+Route::get('/api/users', [UserController::class, 'export']);
 ?>

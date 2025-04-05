@@ -7,6 +7,24 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function export()
+    {
+        $user = User::all();
+        // Trả về trực tiếp mảng JSON
+        return response()->json($user);
+    }
+
+    public function exportById($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['error' => 'user not found'], 404);
+        }
+
+        return response()->json($user);
+    }
+
     public function store(Request $request)
     {
         // Validate dữ liệu đầu vào

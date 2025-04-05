@@ -42,6 +42,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'api/deletecategories/*',
             
             'api/auth/login',
+            'api/users',
+            'api/users/*',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

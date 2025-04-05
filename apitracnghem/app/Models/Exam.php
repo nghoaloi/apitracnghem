@@ -12,4 +12,6 @@ class Exam extends Model
     protected $table = 'exam';
     protected $fillable = ['id', 'CategoryId', 'ExamName', 'Time', 'CreateAt', 'CreateBy', 'IsActive'];
     public $timestamps = false;
+
+    protected $primaryKey = 'Id';
 }

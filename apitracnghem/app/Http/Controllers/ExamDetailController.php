@@ -54,4 +54,17 @@ class ExamDetailController extends Controller
         \Log::info("Exam detail deleted successfully for ID: $id");
         return response()->json(['message' => 'Exam detail deleted successfully'], 200);
     }
+
+    public function exportByExamId($examId)
+    {
+        // Lọc các chi tiết bài thi theo ExamId
+        $examDetails = ExamDetail::where('ExamId', $examId)->get();
+
+        // Kiểm tra nếu không có dữ liệu nào
+        if ($examDetails->isEmpty()) {
+            return response()->json(['error' => 'No exam details found for the given ExamId'], 404);
+        }
+
+        return response()->json($examDetails);
+    }
 }

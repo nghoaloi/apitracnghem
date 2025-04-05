@@ -30,14 +30,14 @@ class CategoryController extends Controller
         // Validate dữ liệu đầu vào
         $validatedData = $request->validate([
             'CategoryName' => 'required|string|max:255',
-            'CreateAt' => 'required|date',
+           
         ]);
 
         // Tạo danh mục mới
         // $category = Category::create($validatedData);
         $category = Category::create([
             'CategoryName' => $validatedData['CategoryName'],
-            'CreateAt' => $validatedData['CreateAt'],  // Lưu giá trị CreateAt từ request
+            
         ]);
         // Trả về danh mục vừa tạo
         return response()->json($category, 201);
@@ -54,7 +54,7 @@ class CategoryController extends Controller
         }
 
         $category->delete();
-        \Log::info("Category deleted successfully for ID: $id");
+        \Log::info("Category deleted successfully for ID: $id, CategoryName: {$category->CategoryName}");
         return response()->json(['message' => 'Category deleted successfully'], 200);
     }
 }

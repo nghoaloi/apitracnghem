@@ -12,4 +12,6 @@ class ExamDetail extends Model
     protected $table = 'examdetail';
     protected $fillable = ['Id', 'ExamId', 'QuestionId', 'Order'];
     public $timestamps = false;
+
+    protected $primaryKey = 'Id';
 }
