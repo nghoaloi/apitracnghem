@@ -10,11 +10,11 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('UserName', 'Password');
 
-        $user = User::where('email', $credentials['email'])->first();
+        $user = User::where('UserName', $credentials['UserName'])->first();
 
-        if ($user && $user->password === md5($credentials['password'])) {
+        if ($user && $user->Password === md5($credentials['Password'])) {
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([

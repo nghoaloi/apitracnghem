@@ -6,26 +6,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory,HasApiTokens ;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $table = 'user';
     protected $fillable = [
         'Id',
-        'role_id', // Thêm cột RoleId
-        'full_name', // Thêm cột FullName
-        'username', // Thêm cột UserName
-        'name',
-        'email',
-        'password',
+        'RoleId', // Thêm cột RoleId
+        'FullName', // Thêm cột FullName
+        'UserName', // Thêm cột UserName
+        'Password',
+        'CreateAt',
     ];
 
     public $timestamps = false;

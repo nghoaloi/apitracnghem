@@ -60,7 +60,7 @@ Route::get('/api/categories', [CategoryController::class, 'export']);
 Route::post('/api/categories', [CategoryController::class, 'store']);
 Route::delete('/api/deletecategories/{id}', [CategoryController::class, 'destroy']);
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [UserController::class, 'login']);
 Route::post('/api/users', [UserController::class, 'store']);
 Route::delete('/api/deleteusers/{id}', [UserController::class, 'destroy']);
 

@@ -29,8 +29,7 @@ class CategoryController extends Controller
     {
         // Validate dữ liệu đầu vào
         $validatedData = $request->validate([
-            'CategoryName' => 'required|string|max:255',
-           
+            'CategoryName' => 'required|string|max:255',     
         ]);
 
         // Tạo danh mục mới

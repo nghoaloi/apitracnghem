@@ -44,6 +44,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'api/auth/login',
             'api/users',
             'api/users/*',
+            'login/'
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
